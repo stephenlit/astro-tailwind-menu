@@ -75,9 +75,7 @@
     const hamburger = document.querySelector(".hamburger");
 
     //add click event to hamburger
-    hamburger?.addEventListener("click", () => {
-     
-    });
+    hamburger?.addEventListener("click", () => {});
 
     //add event listeners
     dropdownToggle.forEach((buttonToggle) => {
@@ -94,6 +92,17 @@
           dropDownMenu?.classList.add("hidden");
         }
       });
+    });
+
+    //clicking outside of an open dropdown menu closes it
+    window.addEventListener("click", (event) => {
+      if (!event.target.matches(".dropdown-toggle")) {
+        document.querySelectorAll(".dropdown-menu").forEach((menu) => {
+          if (!menu.contains(event.target)) {
+            menu.classList.add("hidden");
+          }
+        });
+      }
     });
   });
 </script>
